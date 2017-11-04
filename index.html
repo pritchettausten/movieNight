@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Night</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h1>Movie Night</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2>Get a Movie</h2>
+					</div>
+					<div class="panel-body">
+						<form>
+						    <div class="form-group">
+						    	<label for="input1">Similar Movie to:</label>
+						    	<input type="text" class="form-control" id="input1">
+						    </div>
+						    <p><b>Or...</b></p>
+						    <label for="sel1">Genre:</label>
+						    	<select class="form-control" id="sel1">
+						        	<option>Action</option>
+									<option>Adventure</option>
+									<option>Animation</option>
+									<option>Comedy</option>
+									<option>Crime</option>
+									<option>Documentary</option>
+									<option>Drama</option>
+									<option>Family</option>
+									<option>Fantasy</option>
+									<option>History</option>
+									<option>Horror</option>
+									<option>Music</option>
+									<option>Mystery</option>
+									<option>Romance</option>
+									<option>Science Fiction</option>
+									<option>TV Movie</option>
+									<option>Thriller</option>
+									<option>War</option>
+									<option>Western</option>
+						    	</select>
+						    	<br>
+						    <button type="button" class="btn btn-success" id="movieButton">Submit</button>
+							<button type="button" class="btn btn-primary" id="popularButton">Popular</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2>Watch This Movie</h2>
+					</div>
+					<div class="panel-body">
+						<p id="movieSuggestion"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2>Taco Recipe</h2>
+					</div>
+					<div class="panel-body">
+						<p id="recipe" style="text-align: left;"></p>
+						<button type="submit" class="btn btn-danger" id="tacoButton">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+body {
+	text-align: center; 
+	background-image: url("../images/taco.png");
+};
+
+p {
+	font-weight: bold;
+};
+
+.panel-default > .panel-heading {
+	background-color: black !important;
+};
