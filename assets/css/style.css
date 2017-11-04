@@ -1,12 +1,10 @@
 body {
 	text-align: center; 
 	background-image: url("../images/taco.png");
+	font-family: 'Special Elite', cursive;
 };
 
 p {
 	font-weight: bold;
 };
 
-.panel-default > .panel-heading {
-	background-color: black !important;
-};
