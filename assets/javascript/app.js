@@ -241,6 +241,7 @@ $("#signIn").on("click", function  (e) {
     var email = $("#email").val().trim();
       var password = $("#password").val().trim();
       var auth = firebase.auth();
+     
 
      var promise = auth.signInWithEmailAndPassword(email, password);
       promise.catch(console.log(e.message));
@@ -250,6 +251,7 @@ $("#createUser").on("click", function  (e) {
     var email = $("#email").val().trim();
       var password = $("#password").val().trim();
       var auth = firebase.auth();
+    
 
      var promise = auth.createUserWithEmailAndPassword(email, password);
       promise.catch(console.log(e.message));
@@ -264,7 +266,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         console.log(firebaseUser.email);
         $("#thePanel").addClass("hide");
         $("#logout").removeClass("hide");
-        $("#loginDiv").text("Welcome: " + firebaseUser.email);
+        $("#loginDiv").html("<h4>" + "Welcome: " + firebaseUser.email);
         $("#logout").removeClass("hide");
         $("#leave").removeClass("hide");
 
@@ -273,8 +275,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         console.log("Not Logged In");
         $("#thePanel").removeClass("hide");
         $("#logout").addClass("hide");
-        $("#loginDiv").addClass("hide");
+        $("#loginDiv").text("Login");
         $("#leave").addClass("hide");
     }
 });
-
