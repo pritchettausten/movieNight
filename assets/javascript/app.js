@@ -102,21 +102,6 @@ $("#movieButton").on("click", function () {
 	$("#input1").val("");
 	
 	var queryUrl = "https://api.themoviedb.org/3/search/movie?api_key=66d2f01d5d725968495c8ffdb6e13ab7&query=" + userInput;
-    var otherURL = "https://www.omdbapi.com/?t=" + userInput + "&y=&plot=full&apikey=40e9cece";        
-
-		$.ajax({
-		            url: otherURL,
-		            method: "GET"
-		        }).done(function(response) {
-		            
-		            var story = response.Plot;
-			        var that = $("<p>").text(story);
-			        $("#rating").append(that);
-		            var rating = response.Rated;
-		            var it = $("<p>").text(rating);
-                	$("#rating").append(it);
-		            
-		        });  
         $.ajax({
             url: queryUrl,
             method: "GET"
@@ -135,6 +120,7 @@ $("#movieButton").on("click", function () {
                     var posterSource = "https://image.tmdb.org/t/p/w342";
                     var greatDiv = $("<div>");
                     var title = $("<h1>").text(response.results[i].title);
+                    	title.addClass("searchTitle");
                     var newImg = $("<img>").attr("src", posterSource + response.results[i].poster_path);
                     var overview = $("<p>").text(response.results[i].overview);
                     var rating= $("<p>").text("Average Rating: " + response.results[i].vote_average);
@@ -142,23 +128,37 @@ $("#movieButton").on("click", function () {
                     greatDiv.append(title);
                     greatDiv.append(newImg);
                     greatDiv.append(gap);
-                    // greatDiv.append(overview);
                     greatDiv.append(rating);
                     possibles.push(greatDiv);
                 }
-
-
-                
                 
                 function displayIt () {
-                var item = possibles[Math.floor(Math.random()*possibles.length)];
-                
-               
-                $("#movieSuggestion").append(item);
-                
+	                var item = possibles[Math.floor(Math.random()*possibles.length)];
+	                
+	               
+	                $("#movieSuggestion").append(item);
+	                
                 };
                 displayIt ();
 
+			    var search = $(".searchTitle");
+			    var searchTitle = search[0].innerHTML;
+			    
+			    var otherURL = "https://www.omdbapi.com/?t=" + searchTitle + "&y=&plot=full&apikey=40e9cece";        
+
+				$.ajax({
+				            url: otherURL,
+				            method: "GET"
+				        }).done(function(response) {
+				            
+				            var story = response.Plot;
+					        var that = $("<p>").text(story);
+					        $("#rating").append(that);
+				            var rating = response.Rated;
+				            var it = $("<p>").text(rating);
+		                	$("#rating").append(it);
+				            
+					        });  
             });
 
         });
