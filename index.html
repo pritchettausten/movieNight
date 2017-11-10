@@ -9,10 +9,11 @@
 	<link href="https://fonts.googleapis.com/css?family=Rozha+One" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+	<script src="https://use.fontawesome.com/a5d529aaa5.js"></script>
 </head>
 <body background="assets/images/taco.png"; style="font-family: 'Rozha One', serif; text-align: center;">
 	<div class="container">
-		
+<!-- page head -->		
 		<div class="row">
 			<div class="col-md-12">
 				<h1 id="pageHead">Movie Date Night</h1>
@@ -23,18 +24,19 @@
 		        </ul>
 			</div>
 		</div>
-
+<!-- creates tabs to switch between pages -->
 		<div class="tab-content">
 			<div id="movieTab" class="tab-pane fade in active">
 				<div class="row">
-					<div class="col-md-4">
-						
+					<div class="col-md-4">						
+<!-- login panel -->		
 						<div class="row-md-11">
 							<div class="panel panel-default" style="border-width: 0px;">
 								<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
 									<h2 style="margin-top: 5px; margin-bottom: 5px;" id="loginDiv">Login</h2>
 								</div>
 								<div class="panel-body" style="background-image: url(assets/images/notebook.png);">
+<!-- login form -->									
 									<form>
 										<div class="input-group" id="thePanel">
 											<input type="text" class="form-control" id="email" placeholder="Email" style="margin-bottom: 10px;">
@@ -43,8 +45,26 @@
 										    	<button class="btn btn-success" type="button" id="signIn" style="margin-right: 10px;">Login</button>
 										    	<button class="btn btn-warning" type="button" id="createUser">Create New Account</button>
 										</div>
-										<!-- <div id="loginDiv"></div> -->
-										<p class="hide" id="leave">Leave a Rating: </p>
+<!-- leave a rating -->
+										<p class="hide" id="leave" style="font-size: 30px; margin-bottom: 0px;">Leave a Rating: 
+											<div class="stars" id="theStars">
+												<form action="">
+												   <input class="fa fa-star-o star-5 star" id="star-5" type="radio" value="5" name="star"/ >
+												   <label class="fa fa-star-o star-5" for="star-5"></label>
+												   <input class="fa fa-star-o star-4 star" id="star-4" type="radio" value="4" name="star"/>
+												   <label class="fa fa-star-o star-4" for="star-4"></label>
+												   <input class="fa fa-star-o star-3 star" id="star-3" type="radio" value="3" name="star"/>
+												   <label class="fa fa-star-o star-3" for="star-3"></label>
+												   <input class="fa fa-star-o star-2 star" id="star-2" type="radio" value="2" name="star"/>
+												   <label class="fa fa-star-o star-2" for="star-2"></label>
+												   <input class="fa fa-star-o star-1 star" id="star-1" type="radio" value="1" name="star"/>
+												   <label class="fa fa-star-o star-1" for="star-1"></label>
+												</form>
+												<div id="average">
+											   		<h4 id="theRating">The Average User Rating is: </h4>
+												</div>
+											</div>
+										</p>
                                         <button class="btn btn-warning hide" type="button" id="logout">Logout</button>
 									</form>
 								</div>
@@ -52,15 +72,18 @@
 						</div>
 
 						<div class="row-md-11">
+<!-- movie search panel -->	
 							<div class="panel panel-default" style="border-width: 0px;">
 								<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
 									<h2 style="margin-top: 5px; margin-bottom: 5px;">Get a Movie</h2>
 								</div>
 								<div class="panel-body" style="background-image: url(assets/images/notebook.png);">
 									<form>
+<!-- what's popular -->										
 										<button type="button" class="btn btn-primary" id="popularButton" style="width: 100%">Whats Popular?</button>
 											<p> </p>
 											<p>Or...</p>
+<!-- similar movie -->										
 										<div class="input-group">
 											<input type="text" class="form-control" id="input1" placeholder="Similar Movie To">
 											<span class="input-group-btn">
@@ -69,6 +92,7 @@
 										</div>
 											<p> </p>
 											<p>Or...</p>
+<!-- genre list -->									    	
 									    	<select class="form-control" id="genreList">
 									        	<option hidden>Pick a Genre</option>
 									        	<option value="28">Action</option>
@@ -100,7 +124,8 @@
 						</div>
 
 					</div>
-					
+
+<!--watch this movie-->
 					<div class="col-md-8">
 						<div class="panel panel-default" style="border-width: 0px;">
 							<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
@@ -108,13 +133,13 @@
 							</div>
 							<div class="panel-body" style="background-image: url(assets/images/notebook.png);">
 								<div id="movieSuggestion"></div>
-								<div id="rating"></div>
+								<div id="rating" style="text-align: justify; padding: 0px 25px 0px 25px;"></div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
+<!-- taco tab -->
 			<div id="tacoTab" class="tab-pane fade">
 				<div class="row">
 					<div class="col-md-12">
