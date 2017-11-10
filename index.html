@@ -3,92 +3,130 @@
 <head>
 	<title>Movie Night</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rozha+One" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 </head>
 <body>
 	<div class="container">
+		
 		<div class="row">
 			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h1>Movie Night</h1>
-					</div>
-				</div>
+				<h1 style="color: white; font-size: 140px;">Movie Date Night</h1>
+				<p style="color: white; font-size: 20px;">Let us chose a movie for your date night and throw in a random taco recipe to spice things up!</p>
+				<ul class="nav nav-pills">
+		              <li class="active" style="background-color: white; margin-right: 0px; border-radius: 0px;"><a data-toggle="tab" href="#movieTab" style="border-radius: 0px; width: 125px;">Movie</a></li>
+		              <li style="background-color: white; margin-left: 0px;"><a data-toggle="tab" href="#tacoTab" style="border-radius: 0px; width: 125px;">Taco</a></li>
+		        </ul>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2>Get a Movie</h2>
+		<div class="tab-content">
+			<div id="movieTab" class="tab-pane fade in active">
+				<div class="row">
+					<div class="col-md-4">
+						
+						<div class="row-md-11">
+							<div class="panel panel-default" style="border-width: 0px;">
+								<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
+									<h2 style="margin-top: 5px; margin-bottom: 5px;">Login</h2>
+								</div>
+								<div class="panel-body" style="background-image: url(assets/images/notebook.png);">
+									<form>
+										<div class="input-group" id="thePanel">
+											<input type="text" class="form-control" id="email" placeholder="Email" style="margin-bottom: 10px;">
+
+											<input type="password" class="form-control" id="password" placeholder="Password" style="margin-bottom: 10px;">
+										    	<button class="btn btn-success" type="button" id="signIn" style="margin-right: 10px;">Login</button>
+										    	<button class="btn btn-warning" type="button" id="createUser">Create New Account</button>
+										</div>
+										<div id="loginDiv"></div>
+										<p class="hide" id="leave">Leave a Rating: </p>
+                                        <button class="btn btn-warning hide" type="button" id="logout">Logout</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<div class="row-md-11">
+							<div class="panel panel-default" style="border-width: 0px;">
+								<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
+									<h2 style="margin-top: 5px; margin-bottom: 5px;">Get a Movie</h2>
+								</div>
+								<div class="panel-body" style="background-image: url(assets/images/notebook.png);">
+									<form>
+										<button type="button" class="btn btn-primary" id="popularButton" style="width: 100%">Whats Popular?</button>
+											<p> </p>
+											<p>Or...</p>
+										<div class="input-group">
+											<input type="text" class="form-control" id="input1" placeholder="Similar Movie To">
+											<span class="input-group-btn">
+										    	<button class="btn btn-success" type="button" id="movieButton">Get It!</button>
+											</span>
+										</div>
+											<p> </p>
+											<p>Or...</p>
+									    	<select class="form-control" id="genreList">
+									        	<option hidden>Pick a Genre</option>
+									        	<option value="28">Action</option>
+			                                    <option value="12">Adventure</option>
+			                                    <option value="16">Animation</option>
+			                                    <option value="35">Comedy</option>
+			                                    <option value="80">Crime</option>
+			                                    <option value="99">Documentary</option>
+			                                    <option value="18">Drama</option>
+			                                    <option value="10751">Family</option>
+			                                    <option value="14">Fantasy</option>
+			                                    <option value="36">History</option>
+			                                    <option value="27">Horror</option>
+			                                    <option value="10402">Music</option>
+			                                    <option value="9648">Mystery</option>
+			                                    <option value="10749">Romance</option>
+			                                    <option value="878">Science Fiction</option>
+			                                    <option value="10770">TV Movie</option>
+			                                    <option value="53">Thriller</option>
+			                                    <option value="10752">War</option>
+			                                    <option value="37">Western</option>
+									    	</select>
+									    	<p>  </p>
+									    	<button type="submit" class="btn btn-success" id="genreButton" style="width: 100%;">Submit</button>
+									    	<br>
+									</form>
+								</div>
+							</div>
+						</div>
+
 					</div>
-					<div class="panel-body">
-						<form>
-						    <div class="form-group">
-						    	<label for="input1">Similar Movie to:</label>
-						    	<input type="text" class="form-control" id="input1">
-						    </div>
-						    <button type="submit" class="btn btn-success" id="movieButton">Submit</button>
-						    <p><b>Or...</b></p>
-						    <label for="sel1">Genre:</label>
-						    	<select class="form-control" id="genreList">
-						        	<option value="28" class="select">Action</option>
-                                    <option value="12">Adventure</option>
-                                    <option value="16">Animation</option>
-                                    <option value="35">Comedy</option>
-                                    <option value="80">Crime</option>
-                                    <option value="99">Documentary</option>
-                                    <option value="18">Drama</option>
-                                    <option value="10751">Family</option>
-                                    <option value="14">Fantasy</option>
-                                    <option value="36">History</option>
-                                    <option value="27">Horror</option>
-                                    <option value="10402">Music</option>
-                                    <option value="9648">Mystery</option>
-                                    <option value="10749">Romance</option>
-                                    <option value="878">Science Fiction</option>
-                                    <option value="10770">TV Movie</option>
-                                    <option value="53">Thriller</option>
-                                    <option value="10752">War</option>
-                                    <option value="37">Western</option>
-						    	</select>
-						    	<button type="submit" class="btn btn-success" id="genreButton">Submit</button>
-						    	<br>
-							<button type="button" class="btn btn-primary" id="popularButton">Popular</button>
-						</form>
+					
+					<div class="col-md-8">
+						<div class="panel panel-default" style="border-width: 0px;">
+							<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
+								<h2 style="margin-top: 5px; margin-bottom: 5px;">Watch This Movie</h2>
+							</div>
+							<div class="panel-body" style="background-image: url(assets/images/notebook.png);">
+								<div id="movieSuggestion"></div>
+								<div id="rating"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-8">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2>Watch This Movie</h2>
-					</div>
-					<div class="panel-body">
-						<h1 id="movie-title"></h1> 
-						<h4 id="movie-release"></h4>
-                        <div id="movie-poster"></div>
-                        <div id="movie-overview"></div>
-                        <div id="movie-rating"></div>
-						<div id="movieSuggestion"></div>
-						<div id="rating"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h2>Taco Recipe</h2>
-					</div>
-					<div class="panel-body">
-						<p id="recipe" style="text-align: left;"></p>
-						<button type="submit" class="btn btn-danger" id="tacoButton">Submit</button>
+
+			<div id="tacoTab" class="tab-pane fade">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default" style="border-width: 0px;">
+							<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
+								<h2 style="margin-top: 5px; margin-bottom: 5px;">Taco Recipe</h2>
+							</div>
+							<div class="panel-body" style="background-image: url(assets/images/notebook.png);">
+								<p id="recipe" style="text-align: left;"></p>
+								<button type="submit" class="btn btn-danger" id="tacoButton">Get That Recipe!</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

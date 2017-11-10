@@ -1,10 +1,14 @@
+
 body {
 	text-align: center; 
 	background-image: url("../images/taco.png");
-	font-family: 'Special Elite', cursive;
+	font-family: 'Rozha One', serif;
+};
+.jumbotron {
+	padding-top: 10px;
+	padding-bottom: 10px;
 };
 
 p {
 	font-weight: bold;
 };
-
