@@ -43,7 +43,7 @@ $("#popularButton").on("click", function () {
     url: queryURL, 
     method: 'GET'
     }).done(function(response){
-    	console.log(response);
+    	
         var randomNum = Math.floor(Math.random() * 19);
         var posterURL = "https://image.tmdb.org/t/p/w500"
         var imageTag = $("<img>").attr("src", posterURL + response.results[randomNum].poster_path);
@@ -55,9 +55,13 @@ $("#popularButton").on("click", function () {
                 	newImg.attr("style", "width: 342px;", "height: auto;")    
             	var paragraphOne = $("<h1>").text(response.results[randomNum].title);
                 var gap = $("<p>").text(" ");
+                var paragraphThree = $("<p>").text("Average Rating: " + response.results[randomNum].vote_average);
+               
                 greatDiv.append(paragraphOne);
                 greatDiv.append(newImg);
                 greatDiv.append(gap);
+                greatDiv.append(paragraphThree);
+                
 
                $("#movieSuggestion").append(greatDiv);
 		
@@ -123,9 +127,11 @@ $("#movieButton").on("click", function () {
                     	title.addClass("searchTitle");
                     var newImg = $("<img>").attr("src", posterSource + response.results[i].poster_path);
                     var gap = $("<p>").text(" ");
+               		var paragraphThree = $("<p>").text("Average Rating: " + response.results[i].vote_average);
                     greatDiv.append(title);
                     greatDiv.append(newImg);
                     greatDiv.append(gap);
+                    greatDiv.append(paragraphThree);
 
                     possibles.push(greatDiv);
                 };
@@ -199,9 +205,12 @@ $("#genreButton").on("click", function () {
                     var newImg = $("<img>").attr("src", posterURL + response.results[randomNum].poster_path);    
                    	var paragraphOne = $("<h1>").text(response.results[randomNum].title);
                     var gap = $("<p>").text(" ");
+                    var paragraphThree = $("<p>").text("Average Rating: " + response.results[randomNum].vote_average);
+
                     greatDiv.append(paragraphOne);
                     greatDiv.append(newImg);
                     greatDiv.append(gap);
+                    greatDiv.append(paragraphThree);
 
                    $("#movieSuggestion").append(greatDiv);
             
