@@ -36,7 +36,7 @@ $("#popularButton").on("click", function () {
     $("#rating").empty();
     
 	var apiKey = "66d2f01d5d725968495c8ffdb6e13ab7"
-	var pageNumber = Math.floor(Math.random() * 50) + 1;
+	var pageNumber = Math.floor(Math.random() * 100) + 1;
 	var queryURL = "https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=" + pageNumber;
 
     $.ajax({
@@ -54,14 +54,10 @@ $("#popularButton").on("click", function () {
                 var newImg = $("<img>").attr("src", posterURL + response.results[randomNum].poster_path);
                 	newImg.attr("style", "width: 342px;", "height: auto;")    
             	var paragraphOne = $("<h1>").text(response.results[randomNum].title);
-                var paragraphTwo = $("<p>").text(response.results[randomNum].overview);
-                var paragraphThree = $("<p>").text("Average Rating: " + response.results[randomNum].vote_average);
                 var gap = $("<p>").text(" ");
                 greatDiv.append(paragraphOne);
                 greatDiv.append(newImg);
                 greatDiv.append(gap);
-                // greatDiv.append(paragraphTwo);
-                greatDiv.append(paragraphThree);
 
                $("#movieSuggestion").append(greatDiv);
 		
@@ -107,8 +103,8 @@ $("#movieButton").on("click", function () {
             url: queryUrl,
             method: "GET"
         }).done(function(response) {
+            
             var jack = response.results[0].id;
-            // var pageNumber = Math.floor(Math.random() * 10);
             var similarUrl = "https://api.themoviedb.org/3/movie/" + jack + "/similar?api_key=66d2f01d5d725968495c8ffdb6e13ab7&language=en-US&page=" + response.total_pages;
 
 //uses the id of the movie to get similar movies
@@ -117,7 +113,7 @@ $("#movieButton").on("click", function () {
                 url: similarUrl,
                 method: "GET"
             }).done(function(response) {
-                console.log(similarUrl);
+                
 //makes an array of divs from the list of similar movies
 
                 for (var i = 0; i < 20; i++) {
@@ -126,13 +122,11 @@ $("#movieButton").on("click", function () {
                     var title = $("<h1>").text(response.results[i].title);
                     	title.addClass("searchTitle");
                     var newImg = $("<img>").attr("src", posterSource + response.results[i].poster_path);
-                    var overview = $("<p>").text(response.results[i].overview);
-                    var rating= $("<p>").text("Average Rating: " + response.results[i].vote_average);
                     var gap = $("<p>").text(" ");
                     greatDiv.append(title);
                     greatDiv.append(newImg);
                     greatDiv.append(gap);
-                    greatDiv.append(rating);
+
                     possibles.push(greatDiv);
                 };
              
@@ -204,13 +198,10 @@ $("#genreButton").on("click", function () {
             var greatDiv = $("<div>");
                     var newImg = $("<img>").attr("src", posterURL + response.results[randomNum].poster_path);    
                    	var paragraphOne = $("<h1>").text(response.results[randomNum].title);
-                    var paragraphTwo = $("<p>").text(response.results[randomNum].overview);
-                    var paragraphThree = $("<p>").text("Average Rating: " + response.results[randomNum].vote_average);
                     var gap = $("<p>").text(" ");
                     greatDiv.append(paragraphOne);
                     greatDiv.append(newImg);
                     greatDiv.append(gap);
-                    greatDiv.append(paragraphThree);
 
                    $("#movieSuggestion").append(greatDiv);
             
@@ -318,3 +309,41 @@ var config = {
 			$("#theStars").addClass("hide");
 	    }
 	});
+
+var emailInvite = {
+    to_email: "",
+    reply_to: "",
+    from_name: "",
+    to_name: "",
+    taco_movie: ""
+};
+
+$("#viewEmail").on("click", function () {
+    event.preventDefault();
+
+	emailInvite.to_email = $("#to_email").val();
+	emailInvite.reply_to = $("#reply_to").val();
+	emailInvite.from_name = $("#from_name").val();
+	emailInvite.to_name = $("#to_name").val();
+	emailInvite.taco_movie = $("#taco_movie").val();
+
+	$("#sentTo").text("Send to: " + emailInvite.to_email)
+	$("#sentBy").text("Send from: " + emailInvite.reply_to)
+
+	$("#exampleEmail").text("Hello, " + emailInvite.to_name + ". You've just been invited to enjoy a spicy taco and movie with " + emailInvite.from_name + ", who says, " + emailInvite.taco_movie + " Sincerely, Your Taco Team")
+
+    $("#emailDisplay").modal("show");
+});
+
+$("#sendEmail").on("click", function () {
+       event.preventDefault();
+       $("#emailDisplay").modal("hide");
+    
+       emailjs.send("tacos8movies","taco_email", emailInvite)
+        .then(function(response) {
+        console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+		},	function(err) {
+		  	console.log("FAILED. error=", err);
+			});
+
+});

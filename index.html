@@ -4,12 +4,18 @@
 	<title>Movie Night</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Rozha+One" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 	<script src="https://use.fontawesome.com/a5d529aaa5.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+	   (function(){
+	      emailjs.init("user_LhSPOqFKQI99ETpIc7diB");
+	   })();
+	</script>
 </head>
 <body background="assets/images/taco.png"; style="font-family: 'Rozha One', serif; text-align: center;">
 	<div class="container">
@@ -142,7 +148,89 @@
 <!-- taco tab -->
 			<div id="tacoTab" class="tab-pane fade">
 				<div class="row">
-					<div class="col-md-12">
+					<!--the form to submit and send an invitation email-->
+        			<div class="col-md-4">
+                        <div class="panel panel-default" style="border-width: 0px;">
+                            <div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
+                                <h2 style="margin-top: 5px; margin-bottom: 5px;">Who do you want to invite?</h2>
+                            </div>
+                            <div class="panel-body" style="background-image: url(assets/images/notebook.png);">
+                                
+                                <div class="row" style="display: inline-block; margin-left: auto;margin-right: auto; text-align: left;">
+                                <form>
+
+                                <div class="form-group row">
+                                      <label for="example-text-input" class="col-2 col-form-label">To:</label>
+                                      <div class="col-10">
+                                        <input class="form-control" type="text" id="to_name" placeholder="Their name">
+                                      </div>
+                                </div>
+
+                                <div class="form-group row">
+                                      <label for="example-text-input" class="col-2 col-form-label">Their Email:</label>
+                                      <div class="col-10">
+                                        <input class="form-control" type="text" id="to_email" placeholder="Their email">
+                                      </div>
+                                </div>
+
+                                <div class="form-group row">
+                                      <label for="example-text-input" class="col-2 col-form-label">From:</label>
+                                      <div class="col-10">
+                                        <input class="form-control" type="text" id="from_name" placeholder="Your name">
+                                      </div>
+                                </div>
+
+                                <div class="form-group row">
+                                      <label for="example-text-input" class="col-2 col-form-label">Your Email:</label>
+                                      <div class="col-10">
+                                        <input class="form-control" type="text" id="reply_to" placeholder="Your Email">
+                                      </div>
+                                </div>
+
+                                <br>
+                                <div class="form-group row">
+                                    <label for="email content">Send a Message:</label>
+                                    <textarea class="form-control" type="text" id="taco_movie" rows="3"></textarea>
+                                  </div>
+                                <button type="submit" class="btn btn-success" id="viewEmail">Submit
+                                </button>
+
+                                </form>
+                                </div>
+
+                <!-- Modal -->
+                              <div class="modal fade" id="emailDisplay" role="dialog">
+                                <div class="modal-dialog">
+    
+                 <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal">&times;
+                                              </button>
+                                              <h4 class="modal-title">Example Email:
+                                              </h4>
+                                        </div>
+                                            <div class="modal-body">
+                                            <p id="sentTo"></p>
+                                            <p id="sentBy"></p>
+                                             <p id="exampleEmail"></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">I messed up.
+                                              </button>
+                                              <button type="submit" class="btn btn-success" id="sendEmail">Send!
+                                              </button>
+                                        </div>
+                                      </div>
+      
+                               </div>
+                              </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-md-8">
 						<div class="panel panel-default" style="border-width: 0px;">
 							<div class="panel-heading" style="background-image: url(assets/images/triangular.png);">
 								<h2 style="margin-top: 5px; margin-bottom: 5px;">Taco Recipe</h2>
