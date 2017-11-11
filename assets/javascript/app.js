@@ -1,7 +1,7 @@
 //taco search
 //=============================================================================
 
-var queryURL = "http://taco-randomizer.herokuapp.com/random/?full-taco=true"
+var queryURL = "https://taco-randomizer.herokuapp.com/random/?full-taco=true"
 
 $("#tacoButton").on("click", function() {
 	$.ajax({
