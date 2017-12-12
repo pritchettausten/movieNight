@@ -242,12 +242,12 @@ $("#genreButton").on("click", function () {
 //=============================================================================
 
 var config = {
-    apiKey: "AIzaSyC5JwzL0Xv5H-dXwjbDhM5lSmPNCSxLJ6M",
-    authDomain: "my-first-firebase-a427f.firebaseapp.com",
-    databaseURL: "https://my-first-firebase-a427f.firebaseio.com",
-    projectId: "my-first-firebase-a427f",
-    storageBucket: "my-first-firebase-a427f.appspot.com",
-    messagingSenderId: "170032079984"
+    apiKey: "AIzaSyCZe0YaRus25JZ15Mnvg7RFAKgQd8zoTMY",
+    authDomain: "classproject-326e1.firebaseapp.com",
+    databaseURL: "https://classproject-326e1.firebaseio.com",
+    projectId: "classproject-326e1",
+    storageBucket: "classproject-326e1.appspot.com",
+    messagingSenderId: "480119801997"
   };
   firebase.initializeApp(config);
 
