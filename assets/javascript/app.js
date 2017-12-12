@@ -34,6 +34,7 @@ $("#popularButton").on("click", function () {
     event.preventDefault();
     $("#movieSuggestion").empty();
     $("#rating").empty();
+    $("#movieTitle").empty();
     
 	var apiKey = "66d2f01d5d725968495c8ffdb6e13ab7"
 	var pageNumber = Math.floor(Math.random() * 100) + 1;
@@ -57,7 +58,7 @@ $("#popularButton").on("click", function () {
                 var gap = $("<p>").text(" ");
                 var paragraphThree = $("<p>").text("Average Rating: " + response.results[randomNum].vote_average);
                
-                greatDiv.append(paragraphOne);
+                $("#movieTitle").append(paragraphOne);
                 greatDiv.append(newImg);
                 greatDiv.append(gap);
                 greatDiv.append(paragraphThree);
@@ -97,6 +98,7 @@ $("#movieButton").on("click", function () {
 	event.preventDefault();
 	$("#movieSuggestion").empty();
 	$("#rating").empty();
+	$("#movieTitle").empty();
 	var userInput = $("#input1").val().trim();
 	$("#input1").val("");
 	
@@ -178,6 +180,7 @@ $("#genreButton").on("click", function () {
         event.preventDefault();
         $("#movieSuggestion").empty();
         $("#rating").empty();
+        $("#movieTitle").empty();
    
 //uses the value given to the genre selected to pull up a random movie from that genre
 
@@ -207,7 +210,7 @@ $("#genreButton").on("click", function () {
                     var gap = $("<p>").text(" ");
                     var paragraphThree = $("<p>").text("Average Rating: " + response.results[randomNum].vote_average);
 
-                    greatDiv.append(paragraphOne);
+                    $("#movieTitle").append(paragraphOne);
                     greatDiv.append(newImg);
                     greatDiv.append(gap);
                     greatDiv.append(paragraphThree);
@@ -239,12 +242,12 @@ $("#genreButton").on("click", function () {
 //=============================================================================
 
 var config = {
-    apiKey: "AIzaSyCZe0YaRus25JZ15Mnvg7RFAKgQd8zoTMY",
-    authDomain: "classproject-326e1.firebaseapp.com",
-    databaseURL: "https://classproject-326e1.firebaseio.com",
-    projectId: "classproject-326e1",
-    storageBucket: "classproject-326e1.appspot.com",
-    messagingSenderId: "480119801997"
+    apiKey: "AIzaSyC5JwzL0Xv5H-dXwjbDhM5lSmPNCSxLJ6M",
+    authDomain: "my-first-firebase-a427f.firebaseapp.com",
+    databaseURL: "https://my-first-firebase-a427f.firebaseio.com",
+    projectId: "my-first-firebase-a427f",
+    storageBucket: "my-first-firebase-a427f.appspot.com",
+    messagingSenderId: "170032079984"
   };
   firebase.initializeApp(config);
 
